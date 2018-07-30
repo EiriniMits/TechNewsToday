@@ -28,7 +28,7 @@ You can read news from these 10 sources:
 * User can choose among 10 different sources
 * Ability to bookmark favorite articles to view them even when offline 
 * Ability to share articles
-* Full Article displayed in Webview
+* Webview displays the Full Article
 * Google Ads under each article
 * Widget to display all the favorite articles
 * Google Analytics for screen tracking  
