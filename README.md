@@ -7,6 +7,7 @@ Tech News Today App is the Capstone Project and created as a part of [Udacity An
 ## Description
 Tech News Today is a news app that allows users to read the most famous Tech News blogs and sites,
 share news with their friends and save their favourite articles.
+
 If you want to stay up to date with what happens in the world of Technology, Hardware, smartphones,
 newest games and apps, updates and reviews, latest geek stories and use as little time as possible, then
 Tech News Today is what you need!
