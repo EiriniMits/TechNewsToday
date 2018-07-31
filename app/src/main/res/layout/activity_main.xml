@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ars_technica"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ars_technica_banner"
+            android:contentDescription="@string/ars_technica_main_logo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/engadget"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/engadget_banner"
+            android:contentDescription="@string/engadget_main_logo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grunderszene"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/grunderszene"
+            android:contentDescription="@string/grunderszene_main_logo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hackernews"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/hacker_news"
+            android:contentDescription="@string/hackernews_main_logo"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/recode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/recode2"
+            android:contentDescription="@string/recode_main_logo"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/t3n"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/t3n_logo"
+            android:contentDescription="@string/t3n_main_logo"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/techcrunch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/techcrunch_banner"
+            android:contentDescription="@string/techcrunch_main_logo"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/techradar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/techradar_banner"
+            android:contentDescription="@string/techradar_main_logo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tnw"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/tnw_banner"
+            android:contentDescription="@string/tnw_main_logo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verge"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/verge_banner"
+            android:contentDescription="@string/verge_main_logo"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

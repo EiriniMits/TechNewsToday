@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.eirinimitsopoulou.technewstoday.Utils.SquareImageView
+        android:id="@+id/grid_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_xsmall"
+        android:contentDescription="@string/article_image"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/linearlayoutContactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_xsmall"
+        android:background="#88000000"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_xsmall"
+        android:paddingLeft="@dimen/margin_xsmall"
+        android:paddingTop="@dimen/margin_xsmall">
+
+        <TextView
+            android:id="@+id/grid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_medium" />
+    </LinearLayout>
+</RelativeLayout>

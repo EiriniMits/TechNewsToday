@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Tech News Today</string>
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="article_image">Article Image</string>
+    <string name="sample_title">Facebook’s stock drop hurt the rest of the tech industry — except Google</string>
+    <string name="sample_author">By Eric Johnson</string>
+    <string name="overview">Overview</string>
+    <string name="sample_overview">The company’s $120 billion market value loss reverberated throughout the industry.</string>
+    <string name="share">Share</string>
+    <string name="favorites">Favorites</string>
+    <string name="btn_text">Read full article</string>
+    <string name="ars_technica_main_logo">The Ars Technica Logo</string>
+    <string name="engadget_main_logo">The Engadget Logo</string>
+    <string name="techcrunch_main_logo">The TechCrunch Logo</string>
+    <string name="techradar_main_logo">The TechRadar Logo</string>
+    <string name="tnw_main_logo">The TNW Logo</string>
+    <string name="verge_main_logo">The Verge Logo</string>
+    <string name="t3n_main_logo">The  t3n Logo</string>
+    <string name="recode_main_logo">The  Recode Logo</string>
+    <string name="hackernews_main_logo">The  Hackernews Logo</string>
+    <string name="grunderszene_main_logo">The  Grunderszene Logo</string>
+    <string name="delete">Delete</string>
+    <string name="read_more">Read More</string>
+    <string name="my_favorite_title">Favorite Articles</string>
+    <string name="no_favorites">Still No Favorites!</string>
+    <string name="message">Are you sure you want to delete this article?</string>
+</resources>
