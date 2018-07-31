@@ -57,6 +57,6 @@ buildTypes.each {
 ## Icon credits
 * Smartphone Icon by [Freepik](https://www.flaticon.com/authors/freepik)
 * Favourite Button Icon by [Freepik](https://www.flaticon.com/authors/freepik)
-* Trash Button Icon by [Freepik](https://www.flaticon.com/authors/freepik)
+* Cross/Delete Button Icon by [Freepik](https://www.flaticon.com/authors/freepik)
 * Heart Button Icon by [Freepik](https://www.flaticon.com/authors/freepik)
 * Share Button Icon by [Freepik](https://www.flaticon.com/authors/freepik)
