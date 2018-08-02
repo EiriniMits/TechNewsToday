@@ -15,7 +15,6 @@
     <dimen name="text_xlarge">22dp</dimen>
     <dimen name="text_xxlarge">30dp</dimen>
 
-
     <dimen name="layout_size">300dp</dimen>
     <dimen name="layout_size2">200dp</dimen>
 

@@ -1,6 +1,7 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,15 +10,14 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 
-import com.eirinimitsopoulou.technewstoday.Adapters.ArticlesAdapter;
-import com.eirinimitsopoulou.technewstoday.Models.Article;
-import com.eirinimitsopoulou.technewstoday.Models.Source;
-import com.eirinimitsopoulou.technewstoday.Interfaces.ArticleApiInterface;
+import com.eirinimitsopoulou.technewstoday.adapters.ArticlesAdapter;
+import com.eirinimitsopoulou.technewstoday.models.Article;
+import com.eirinimitsopoulou.technewstoday.models.Source;
+import com.eirinimitsopoulou.technewstoday.interfaces.ArticleApiInterface;
 import com.eirinimitsopoulou.technewstoday.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -71,7 +71,7 @@ public class ArticleList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ArticleList.this, DetailActivity.class);
-                intent.putExtra("news", (Serializable) data.get(position));
+                intent.putExtra("news", (Parcelable) data.get(position));
                 startActivity(intent);
             }
         });

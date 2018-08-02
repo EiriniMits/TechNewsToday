@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.HitBuilders;
@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 
-import com.eirinimitsopoulou.technewstoday.Analytics.AnalyticsApplication;
+import com.eirinimitsopoulou.technewstoday.analytics.AnalyticsApplication;
 import com.eirinimitsopoulou.technewstoday.R;
 
 /**

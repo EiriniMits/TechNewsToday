@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Models;
+package com.eirinimitsopoulou.technewstoday.models;
 
 import java.util.List;
 

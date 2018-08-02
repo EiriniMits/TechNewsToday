@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,76 +46,54 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        arsTechnica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("ars-technica");
-            }
-        });
-
-        engadget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("engadget");
-            }
-        });
-
-        techCrunch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("techcrunch");
-            }
-        });
-
-        techRadar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("techradar");
-            }
-        });
-
-        theNextWeb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("the-next-web");
-            }
-        });
-
-        verge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("the-verge");
-            }
-        });
-
-        recode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("recode");
-            }
-        });
-
-        grunderszene.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("gruenderszene");
-            }
-        });
-
-        t3n.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("t3n");
-            }
-        });
-
-        hacker_news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySourceArticles("hacker-news");
-            }
-        });
+        arsTechnica.setOnClickListener(myhandlerOnClickListener);
+        engadget.setOnClickListener(myhandlerOnClickListener);
+        techCrunch.setOnClickListener(myhandlerOnClickListener);
+        techRadar.setOnClickListener(myhandlerOnClickListener);
+        theNextWeb.setOnClickListener(myhandlerOnClickListener);
+        verge.setOnClickListener(myhandlerOnClickListener);
+        recode.setOnClickListener(myhandlerOnClickListener);
+        grunderszene.setOnClickListener(myhandlerOnClickListener);
+        t3n.setOnClickListener(myhandlerOnClickListener);
+        hacker_news.setOnClickListener(myhandlerOnClickListener);
     }
+
+    private View.OnClickListener myhandlerOnClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ars_technica:
+                    displaySourceArticles("ars-technica");
+                    break;
+                case R.id.engadget:
+                    displaySourceArticles("engadget");
+                    break;
+                case R.id.techcrunch:
+                    displaySourceArticles("techcrunch");
+                    break;
+                case R.id.techradar:
+                    displaySourceArticles("techradar");
+                    break;
+                case R.id.tnw:
+                    displaySourceArticles("the-next-web");
+                    break;
+                case R.id.verge:
+                    displaySourceArticles("the-verge");
+                    break;
+                case R.id.recode:
+                    displaySourceArticles("recode");
+                    break;
+                case R.id.grunderszene:
+                    displaySourceArticles("gruenderszene");
+                    break;
+                case R.id.t3n:
+                    displaySourceArticles("t3n");
+                    break;
+                case R.id.hackernews:
+                    displaySourceArticles("hacker-news");
+                    break;
+            }
+        }
+    };
 
     private void displaySourceArticles(String newsSource) {
         Intent openNewsResultsView = new Intent(getApplicationContext(), ArticleList.class);

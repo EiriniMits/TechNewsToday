@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.eirinimitsopoulou.technewstoday.Utils.SquareImageView
+    <com.eirinimitsopoulou.technewstoday.utils.SquareImageView
         android:id="@+id/grid_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/grid_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/text_medium" />
     </LinearLayout>
 </RelativeLayout>

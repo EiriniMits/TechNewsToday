@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Widget;
+package com.eirinimitsopoulou.technewstoday.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -10,7 +10,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.widget.RemoteViews;
 
 import com.eirinimitsopoulou.technewstoday.R;
-import com.eirinimitsopoulou.technewstoday.Activities.FavoriteActivity;
+import com.eirinimitsopoulou.technewstoday.activities.FavoriteActivity;
 
 /**
  * Created by eirinimitsopoulou on 07/07/2018.

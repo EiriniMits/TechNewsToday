@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Data;
+package com.eirinimitsopoulou.technewstoday.data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import static com.eirinimitsopoulou.technewstoday.Data.FavoriteContract.ArticleEntry.TABLE_NAME;
+import static com.eirinimitsopoulou.technewstoday.data.FavoriteContract.ArticleEntry.TABLE_NAME;
 
 /**
  * Created by eirinimitsopoulou on 07/07/2018.
@@ -20,7 +20,7 @@ public class FavoriteProvider extends ContentProvider {
 
 
     public static final int ARTICLES = 100;
-    private static final UriMatcher sUriMatcher = buildUriMatcher();
+    private static final UriMatcher mUriMatcher = buildUriMatcher();
 
 
     public static UriMatcher buildUriMatcher() {
@@ -46,7 +46,7 @@ public class FavoriteProvider extends ContentProvider {
 
         final SQLiteDatabase db = mArticleDBHelper.getWritableDatabase();
 
-        int match = sUriMatcher.match(uri);
+        int match = mUriMatcher.match(uri);
         Uri returnUri;
 
         switch (match) {
@@ -56,7 +56,7 @@ public class FavoriteProvider extends ContentProvider {
                 if (id > 0) {
                     returnUri = ContentUris.withAppendedId(FavoriteContract.ArticleEntry.CONTENT_URI, id);
                 } else {
-                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                    throw new android.database.SQLException("Failed to insert row" + uri);
                 }
                 break;
 
@@ -76,7 +76,7 @@ public class FavoriteProvider extends ContentProvider {
 
         final SQLiteDatabase db = mArticleDBHelper.getReadableDatabase();
 
-        int match = sUriMatcher.match(uri);
+        int match = mUriMatcher.match(uri);
         Cursor retCursor;
 
         switch (match) {
@@ -104,7 +104,7 @@ public class FavoriteProvider extends ContentProvider {
 
         final SQLiteDatabase db = mArticleDBHelper.getWritableDatabase();
 
-        int match = sUriMatcher.match(uri);
+        int match = mUriMatcher.match(uri);
         int tasksDeleted;
 
         if (null == selection) {
@@ -132,14 +132,14 @@ public class FavoriteProvider extends ContentProvider {
     public int update(@NonNull Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        throw new UnsupportedOperationException("Not implemented");
     }
 
 
     @Override
     public String getType(@NonNull Uri uri) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        throw new UnsupportedOperationException("Not implemented");
     }
 
 }

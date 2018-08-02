@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;

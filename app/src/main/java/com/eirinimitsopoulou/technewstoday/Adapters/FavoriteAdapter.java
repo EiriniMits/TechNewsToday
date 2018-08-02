@@ -1,9 +1,10 @@
-package com.eirinimitsopoulou.technewstoday.Adapters;
+package com.eirinimitsopoulou.technewstoday.adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.eirinimitsopoulou.technewstoday.Activities.ReadCompleteActivity;
-import com.eirinimitsopoulou.technewstoday.Data.FavoriteContract;
-import com.eirinimitsopoulou.technewstoday.Models.Article;
+import com.eirinimitsopoulou.technewstoday.activities.ReadCompleteActivity;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteContract;
+import com.eirinimitsopoulou.technewstoday.models.Article;
 import com.eirinimitsopoulou.technewstoday.R;
 import com.squareup.picasso.Picasso;
 
@@ -32,10 +33,20 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     private Context mContext;
     private ArrayList<Article> mArticlesList;
     private Article news;
+    private Cursor mCursor;
 
+    private final FavoriteAdapterOnClickHandler mClickHandler;
 
-    public FavoriteAdapter(Context mContext, ArrayList<Article> mArticlesList) {
+    /**
+     * The interface that receives onClick messages.
+     */
+    public interface FavoriteAdapterOnClickHandler {
+        void onFavoriteArticleClick(Article article);
+    }
+
+    public FavoriteAdapter(Context mContext, ArrayList<Article> mArticlesList, FavoriteAdapterOnClickHandler clickHandler) {
         this.mContext = mContext;
+        mClickHandler = clickHandler;
         this.mArticlesList = mArticlesList;
     }
 
@@ -97,10 +108,53 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 };
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setMessage(R.string.message).setPositiveButton("Yes", dialogClickListener)
-                        .setNegativeButton("No", dialogClickListener).show();
+                builder.setMessage(R.string.message).setPositiveButton(R.string.yes, dialogClickListener)
+                        .setNegativeButton(R.string.no, dialogClickListener).show();
             }
         });
+    }
+
+    public Cursor swapCursor(Cursor cursor) {
+
+        if (mCursor == cursor) {
+            return null;
+        }
+
+
+        Cursor temp = mCursor;
+        this.mCursor = cursor;
+        this.mArticlesList.clear();
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int articleAuthorIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_AUTHOR);
+            int articleTitleIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_TITLE);
+            int articleDescriptionIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_DESCRIPTION);
+            int articleUrlIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_URL);
+            int articleUrlImageIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_IMAGE_URL);
+            int articlePublishedIndex = cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_TIME);
+
+            do {
+                String articleAuthor = cursor.getString(articleAuthorIndex);
+                String articleTitle = cursor.getString(articleTitleIndex);
+                String articleDescription = cursor.getString(articleDescriptionIndex);
+                String articleUrl = cursor.getString(articleUrlIndex);
+                String articleUrlImage = cursor.getString(articleUrlImageIndex);
+                String articlePublished = cursor.getString(articlePublishedIndex);
+
+                Article article = new Article();
+                article.setAuthor(articleAuthor);
+                article.setTitle(articleTitle);
+                article.setDescription(articleDescription);
+                article.setUrl(articleUrl);
+                article.setUrlToImage(articleUrlImage);
+                article.setPublishedAt(articlePublished);
+                mArticlesList.add(article);
+            }
+            while (cursor.moveToNext());
+
+            this.notifyDataSetChanged();
+        }
+        return temp;
     }
 
     @Override

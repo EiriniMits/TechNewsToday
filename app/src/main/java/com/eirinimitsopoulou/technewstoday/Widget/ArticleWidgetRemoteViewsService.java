@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Widget;
+package com.eirinimitsopoulou.technewstoday.widget;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;

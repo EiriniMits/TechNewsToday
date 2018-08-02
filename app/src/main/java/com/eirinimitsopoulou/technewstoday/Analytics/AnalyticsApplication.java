@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Analytics;
+package com.eirinimitsopoulou.technewstoday.analytics;
 
 import android.app.Application;
 

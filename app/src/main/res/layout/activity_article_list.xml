@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/margin_small"
     android:paddingRight="@dimen/margin_small"
     android:paddingTop="@dimen/margin_small"
-    tools:context="Activities.ArticleList">
+    tools:context="activities.ArticleList">
 
 
     <GridView

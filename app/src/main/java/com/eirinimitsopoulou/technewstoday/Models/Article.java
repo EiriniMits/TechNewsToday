@@ -1,12 +1,12 @@
-package com.eirinimitsopoulou.technewstoday.Models;
+package com.eirinimitsopoulou.technewstoday.models;
 
-import java.io.Serializable;
-
+import android.os.Parcel;
+import android.os.Parcelable;
 /**
  * Created by eirinimitsopoulou on 07/07/2018.
  */
 
-public class Article implements Serializable {
+public class Article implements Parcelable {
     private String author;
     private String description;
     private String title;
@@ -17,14 +17,26 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String author, String description, String title, String url, String urlToImage, String publishedAt) {
-        this.author = author;
-        this.description = description;
-        this.title = title;
-        this.url = url;
-        this.urlToImage = urlToImage;
-        this.publishedAt = publishedAt;
+    public Article(Parcel in) {
+        author = in.readString();
+        description  = in.readString();
+        title   = in.readString();
+        url  = in.readString();
+        urlToImage  = in.readString();
+        publishedAt  = in.readString();
     }
+
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 
     public String getAuthor() {
         return author;
@@ -72,5 +84,21 @@ public class Article implements Serializable {
 
     public void setPublishedAt(String publishedAt) {
         this.publishedAt = publishedAt;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(author);
+        parcel.writeString(description);
+        parcel.writeString(title);
+        parcel.writeString(url);
+        parcel.writeString(urlToImage);
+        parcel.writeString(publishedAt);
+
     }
 }

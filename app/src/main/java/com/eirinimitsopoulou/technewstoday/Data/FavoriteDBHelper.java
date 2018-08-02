@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Data;
+package com.eirinimitsopoulou.technewstoday.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 
-import com.eirinimitsopoulou.technewstoday.Models.Article;
+import com.eirinimitsopoulou.technewstoday.models.Article;
 
 import java.util.ArrayList;
 
@@ -48,31 +48,22 @@ public class FavoriteDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<Article> getDataFromDB() {
-        ArrayList<Article> modelList = new ArrayList<Article>();
+    public boolean isEmpty() {
+        boolean empty = true;
         SQLiteDatabase db = getWritableDatabase();
         String query = "select * from " + FavoriteContract.ArticleEntry.TABLE_NAME;
         try {
             Cursor cursor = db.rawQuery(query, null);
-            cursor.moveToFirst();
-
             if (cursor.moveToFirst()) {
-                do {
-                    Article model = new Article();
-                    model.setAuthor(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_AUTHOR)));
-                    model.setDescription(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_DESCRIPTION)));
-                    model.setTitle(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_TITLE)));
-                    model.setUrl(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_URL)));
-                    model.setUrlToImage(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_IMAGE_URL)));
-                    model.setPublishedAt(cursor.getString(cursor.getColumnIndex(FavoriteContract.ArticleEntry.COLUMN_ARTICLE_TIME)));
-                    modelList.add(model);
-                } while (cursor.moveToNext());
+                empty = false;
+            } else {
+                empty = true;
             }
             db.close();
             cursor.close();
-            return modelList;
+            return empty;
         } catch (SQLiteException e) {
-            return new ArrayList<>();
+            return empty;
         }
     }
 }

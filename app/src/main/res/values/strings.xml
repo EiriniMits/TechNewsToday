@@ -24,4 +24,6 @@
     <string name="my_favorite_title">Favorite Articles</string>
     <string name="no_favorites">Still No Favorites!</string>
     <string name="message">Are you sure you want to delete this article?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
 </resources>

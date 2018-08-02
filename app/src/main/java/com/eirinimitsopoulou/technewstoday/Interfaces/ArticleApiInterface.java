@@ -1,6 +1,6 @@
-package com.eirinimitsopoulou.technewstoday.Interfaces;
+package com.eirinimitsopoulou.technewstoday.interfaces;
 
-import com.eirinimitsopoulou.technewstoday.Models.Source;
+import com.eirinimitsopoulou.technewstoday.models.Source;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

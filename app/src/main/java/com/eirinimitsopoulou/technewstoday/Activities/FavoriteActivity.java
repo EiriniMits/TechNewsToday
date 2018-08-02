@@ -1,19 +1,23 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.os.Bundle;
+import android.database.Cursor;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DefaultItemAnimator;
 
-import com.eirinimitsopoulou.technewstoday.Adapters.FavoriteAdapter;
-import com.eirinimitsopoulou.technewstoday.Data.FavoriteDBHelper;
-import com.eirinimitsopoulou.technewstoday.Models.Article;
+import com.eirinimitsopoulou.technewstoday.adapters.FavoriteAdapter;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteContract;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteDBHelper;
+import com.eirinimitsopoulou.technewstoday.models.Article;
 import com.eirinimitsopoulou.technewstoday.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.widget.Toast;
 
@@ -24,13 +28,14 @@ import butterknife.ButterKnife;
  * Created by eirinimitsopoulou on 07/07/2018.
  */
 
-public class FavoriteActivity extends AppCompatActivity {
-
+public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapter.FavoriteAdapterOnClickHandler,
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.recyclerView_favorite)
     RecyclerView recyclerView;
 
     private FavoriteAdapter mAdapter;
+    private static final int ARTICLE_LOADER_ID = 0;
 
     private FavoriteDBHelper favoriteDBHelper;
     private ArrayList<Article> mList = new ArrayList<>();
@@ -44,29 +49,81 @@ public class FavoriteActivity extends AppCompatActivity {
 
         favoriteDBHelper = new FavoriteDBHelper(this);
 
-        mAdapter = new FavoriteAdapter(this, mList);
+        mAdapter = new FavoriteAdapter(this, mList, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        prepareContactData();
+        getSupportLoaderManager().initLoader(ARTICLE_LOADER_ID, null, this);
+
     }
 
-    private void prepareContactData() {
 
-        Article article;
-        List<Article> articles = favoriteDBHelper.getDataFromDB();
-        if (articles.isEmpty()) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getSupportLoaderManager().restartLoader(ARTICLE_LOADER_ID, null, this);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new AsyncTaskLoader<Cursor>(this) {
+
+            Cursor cursor = null;
+
+            @Override
+            protected void onStartLoading() {
+                if (cursor != null) {
+                    deliverResult(cursor);
+                } else {
+                    forceLoad();
+                }
+            }
+
+            @Override
+            public Cursor loadInBackground() {
+
+                try {
+                    return getContentResolver().query(FavoriteContract.ArticleEntry.CONTENT_URI,
+                            null,
+                            null,
+                            null,
+                            null);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+
+            public void deliverResult(Cursor data) {
+                cursor = data;
+                super.deliverResult(data);
+            }
+        };
+    }
+
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        boolean empty = favoriteDBHelper.isEmpty();
+        if (empty) {
             Toast.makeText(FavoriteActivity.this, R.string.no_favorites, Toast.LENGTH_LONG).show();
         }
-        for (Article con : articles) {
-            article = new Article(con.getAuthor(), con.getDescription(), con.getTitle(), con.getUrl(), con.getUrlToImage(), con.getPublishedAt());
-            mList.add(article);
-            mAdapter.notifyDataSetChanged();
-        }
-
+        mAdapter.swapCursor(data);
+        mAdapter.notifyDataSetChanged();
     }
 
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onFavoriteArticleClick(Article article) {
+
+    }
 }
 

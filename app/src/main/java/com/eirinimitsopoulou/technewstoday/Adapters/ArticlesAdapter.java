@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Adapters;
+package com.eirinimitsopoulou.technewstoday.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eirinimitsopoulou.technewstoday.Models.Article;
+import com.eirinimitsopoulou.technewstoday.models.Article;
 import com.eirinimitsopoulou.technewstoday.R;
 import com.squareup.picasso.Picasso;
 

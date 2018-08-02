@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Data;
+package com.eirinimitsopoulou.technewstoday.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;

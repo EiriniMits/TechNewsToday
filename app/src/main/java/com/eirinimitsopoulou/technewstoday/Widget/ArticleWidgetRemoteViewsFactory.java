@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Widget;
+package com.eirinimitsopoulou.technewstoday.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.eirinimitsopoulou.technewstoday.R;
-import com.eirinimitsopoulou.technewstoday.Data.FavoriteContract;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteContract;
 
 /**
  * Created by eirinimitsopoulou on 07/07/2018.

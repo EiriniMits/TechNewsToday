@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Activities;
+package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eirinimitsopoulou.technewstoday.Models.Article;
-import com.eirinimitsopoulou.technewstoday.Data.FavoriteContract;
-import com.eirinimitsopoulou.technewstoday.Data.FavoriteDBHelper;
+import com.eirinimitsopoulou.technewstoday.models.Article;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteContract;
+import com.eirinimitsopoulou.technewstoday.data.FavoriteDBHelper;
 
 import com.eirinimitsopoulou.technewstoday.R;
 import com.google.android.gms.ads.AdRequest;
@@ -32,15 +32,15 @@ import butterknife.ButterKnife;
  */
 
 public class DetailActivity extends AppCompatActivity {
-    @BindView(R.id.detail_view_title)
+    @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.detail_view_description)
+    @BindView(R.id.description)
     TextView description;
-    @BindView(R.id.detail_view_iamgeview)
+    @BindView(R.id.image)
     ImageView imageview;
-    @BindView(R.id.detail_view_source)
+    @BindView(R.id.source)
     TextView author;
-    @BindView(R.id.read_complete)
+    @BindView(R.id.complete)
     Button readComplete;
     @BindView((R.id.heart_button))
     FloatingActionButton heartButton;
@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         Intent i = getIntent();
-        news = (Article) i.getSerializableExtra("news");
+        news = (Article) i.getParcelableExtra("news");
 
         title.setText(news.getTitle());
         description.setText(news.getDescription());

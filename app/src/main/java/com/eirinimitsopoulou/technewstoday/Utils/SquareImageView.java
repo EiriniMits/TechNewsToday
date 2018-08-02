@@ -1,4 +1,4 @@
-package com.eirinimitsopoulou.technewstoday.Utils;
+package com.eirinimitsopoulou.technewstoday.utils;
 
 import android.content.Context;
 import android.util.AttributeSet;

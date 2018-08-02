@@ -10,10 +10,19 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        myconfig {
+            keyAlias 'samplekeyalias'
+            keyPassword 'technewstoday'
+            storeFile file('../samplekey')
+            storePassword 'technewstoday'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myconfig
         }
     }
     buildTypes.each {
