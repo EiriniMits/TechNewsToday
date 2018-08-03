@@ -16,7 +16,6 @@ import com.eirinimitsopoulou.technewstoday.R;
  */
 
 public class SplashScreen extends Activity {
-    private static int SPLASH_TIME_OUT = 2000;
     private Tracker mTracker;
 
     @Override
@@ -24,15 +23,10 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        new Handler().postDelayed(new Runnable() {
+        Intent i = new Intent(this, MainActivity.class);
+        (SplashScreen.this).startActivity(i);
+        finish();
 
-            @Override
-            public void run() {
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                (SplashScreen.this).startActivity(i);
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
 
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
         mTracker = application.getDefaultTracker();

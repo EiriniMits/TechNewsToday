@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.Toolbar;
+
 
 import com.eirinimitsopoulou.technewstoday.models.Article;
 import com.eirinimitsopoulou.technewstoday.data.FavoriteContract;
@@ -44,6 +47,10 @@ public class DetailActivity extends AppCompatActivity {
     Button readComplete;
     @BindView((R.id.heart_button))
     FloatingActionButton heartButton;
+    @BindView((R.id.collapsing))
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView((R.id.toolbar))
+    Toolbar toolbar;
 
     AdView mAdview;
     public boolean favourite;
@@ -63,10 +70,14 @@ public class DetailActivity extends AppCompatActivity {
         FavoriteDBHelper dbHelper = new FavoriteDBHelper(this);
         movieDb = dbHelper.getWritableDatabase();
 
-        getSupportActionBar().hide();
-
         Intent i = getIntent();
         news = (Article) i.getParcelableExtra("news");
+
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        collapsingToolbarLayout.setTitle(" ");
 
         title.setText(news.getTitle());
         description.setText(news.getDescription());

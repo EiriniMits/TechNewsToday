@@ -1,7 +1,6 @@
 package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,9 +26,6 @@ public class ReadCompleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_complete);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");

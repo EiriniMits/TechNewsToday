@@ -2,8 +2,10 @@ package com.eirinimitsopoulou.technewstoday.activities;
 
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +19,8 @@ import com.eirinimitsopoulou.technewstoday.interfaces.ArticleApiInterface;
 import com.eirinimitsopoulou.technewstoday.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import android.app.IntentService;
 
 import java.util.ArrayList;
 
@@ -39,13 +43,15 @@ public class ArticleList extends AppCompatActivity {
     GridView gridView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView((R.id.toolbar))
+    Toolbar toolbar;
     private String mSource = "";
 
 
     final static private String BASE_URL = "https://newsapi.org/v1/";
     private ArticlesAdapter newsAdapter;
     private ArrayList<Article> data;
-    private LoadNews loadNews;
+    private ApiServive apiServive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +63,13 @@ public class ArticleList extends AppCompatActivity {
 
         mSource = thisBundlesExtras.getString("source");
 
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(mSource);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        loadNews = new LoadNews();
-        loadNews.starts();
+        apiServive = new ApiServive();
+        apiServive.fetchNews();
 
         data = new ArrayList<Article>();
         newsAdapter = new ArticlesAdapter(this, data);
@@ -82,13 +91,24 @@ public class ArticleList extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        loadNews.cancel();
+        apiServive.cancel();
     }
 
-    private class LoadNews implements Callback<Source> {
+    private class ApiServive extends IntentService {
         public Call<Source> call;
 
-        public void starts() {
+
+        public ApiServive() {
+            super("ApiServive");
+        }
+
+        @Override
+        protected void onHandleIntent(@Nullable Intent intent) {
+
+            fetchNews();
+        }
+
+        public void fetchNews() {
             Gson gson = new GsonBuilder()
                     .setLenient()
                     .create();
@@ -101,38 +121,45 @@ public class ArticleList extends AppCompatActivity {
             ArticleApiInterface gerritAPI = retrofit.create(ArticleApiInterface.class);
 
             call = gerritAPI.getNews(mSource, "latest", BuildConfig.API_KEY);
-            call.enqueue(this);
+            try {
+                call.enqueue(new Callback<Source>() {
 
-        }
+                    @Override
+                    public void onResponse(Call<Source> call, Response<Source> response) {
+                        if (response.isSuccessful()) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Source res = response.body();
 
-        @Override
-        public void onResponse(Call<Source> call, Response<Source> response) {
-            if (response.isSuccessful()) {
-                progressBar.setVisibility(View.INVISIBLE);
-                Source res = response.body();
+                            for (Article news : res.getArticles()) {
+                                data.add(news);
+                            }
+                            newsAdapter.setData(data);
+                            newsAdapter.notifyDataSetChanged();
+                            gridView.invalidateViews();
+                        } else {
+                            System.out.println(response.errorBody());
+                        }
+                    }
 
-                for (Article news : res.getArticles()) {
-                    data.add(news);
-                }
-                newsAdapter.setData(data);
-                newsAdapter.notifyDataSetChanged();
-                gridView.invalidateViews();
-            } else {
-                System.out.println(response.errorBody());
+                    @Override
+                    public void onFailure(Call<Source> call, Throwable t) {
+                        if (call.isCanceled()) {
+                            Log.e("Retrofit call", "Cancelled Request!");
+                        } else {
+                            Log.e("Retrofit call", "No Network Connection!");
+                        }
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
 
-        @Override
-        public void onFailure(Call<Source> call, Throwable t) {
-            if (call.isCanceled()) {
-                Log.e("Retrofit call", "Cancelled Request!");
-            } else {
-                Log.e("Retrofit call", "No Network Connection!");
-            }
         }
 
         public void cancel() {
             call.cancel();
         }
+
     }
 }

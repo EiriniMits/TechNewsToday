@@ -19,6 +19,7 @@ import com.eirinimitsopoulou.technewstoday.R;
 
 import java.util.ArrayList;
 
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -33,6 +34,8 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
 
     @BindView(R.id.recyclerView_favorite)
     RecyclerView recyclerView;
+    @BindView((R.id.toolbar))
+    Toolbar toolbar;
 
     private FavoriteAdapter mAdapter;
     private static final int ARTICLE_LOADER_ID = 0;
@@ -45,7 +48,11 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.my_favorite_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         favoriteDBHelper = new FavoriteDBHelper(this);
 

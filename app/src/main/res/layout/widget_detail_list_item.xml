@@ -13,6 +13,6 @@
         android:padding="@dimen/margin_small_medium"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_large"
-        tools:text="Google IO leaves everyone in shock" />
+        tools:text="@string/sample_title" />
 
 </FrameLayout>

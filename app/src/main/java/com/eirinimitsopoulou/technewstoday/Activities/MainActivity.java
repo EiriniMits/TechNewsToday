@@ -3,6 +3,7 @@ package com.eirinimitsopoulou.technewstoday.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout t3n;
     @BindView(R.id.hackernews)
     LinearLayout hacker_news;
+    @BindView((R.id.toolbar))
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
 
         arsTechnica.setOnClickListener(myhandlerOnClickListener);
         engadget.setOnClickListener(myhandlerOnClickListener);

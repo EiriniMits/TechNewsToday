@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/margin_xsmall"
     android:layout_marginLeft="@dimen/margin_xsmall"
     android:layout_marginRight="@dimen/margin_xsmall"
+    android:layout_marginStart="@dimen/margin_xsmall"
     android:layout_marginTop="@dimen/margin_xsmall"
     card_view:cardUseCompatPadding="true">
 
@@ -27,8 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/thumbnail"
             android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
             android:maxLines="2"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"

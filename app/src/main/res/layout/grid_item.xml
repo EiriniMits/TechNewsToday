@@ -22,7 +22,9 @@
         android:orientation="horizontal"
         android:paddingBottom="@dimen/margin_xsmall"
         android:paddingLeft="@dimen/margin_xsmall"
-        android:paddingTop="@dimen/margin_xsmall">
+        android:paddingStart="@dimen/margin_xsmall"
+        android:paddingEnd="@dimen/margin_xsmall"
+        android:paddingRight="@dimen/margin_xsmall">
 
         <TextView
             android:id="@+id/grid_title"
