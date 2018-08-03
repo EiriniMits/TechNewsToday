@@ -45,9 +45,8 @@ buildTypes.each {
 }
 ```
 ## Screenshots
-![rsz_screenshot_1532599580](https://user-images.githubusercontent.com/16197563/43371235-5051a8ec-9396-11e8-8af7-ab5ce6de4e53.png) ![rsz_screenshot_1532880364](https://user-images.githubusercontent.com/16197563/43371239-5d0f0598-9396-11e8-87ce-0423908f1944.png) ![rsz_screenshot_1532880280](https://user-images.githubusercontent.com/16197563/43371247-8cec5db0-9396-11e8-9c48-fd94a4b0fb24.png)
-![rsz_screenshot_1532880325](https://user-images.githubusercontent.com/16197563/43371261-c1ddf45c-9396-11e8-94ba-3f6c72d9bd0d.png) ![rsz_screenshot_1532946926](https://user-images.githubusercontent.com/16197563/43392867-a5ab821a-93fd-11e8-8552-4397e7fad581.png) ![rsz_screenshot_1532598925](https://user-images.githubusercontent.com/16197563/43371408-0bc01b06-939a-11e8-8094-2ead0d1e6c65.png)
-
+![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658489-b8c102dc-9761-11e8-933d-45c776188afa.png)![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658575-fadfcb94-9761-11e8-8e77-f2d5859c6de4.png)![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658635-2b7debe6-9762-11e8-8c82-334f559e6564.png)
+![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658729-59c1498a-9762-11e8-8264-6f21477e7654.png)![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658809-95218e22-9762-11e8-8abf-0fc181006903.png)![webp net-resizeimage](https://user-images.githubusercontent.com/16197563/43658896-d9e5e080-9762-11e8-9111-bea395e75757.png)
 
 ## Libraries
 * [Picasso](https://github.com/square/picasso)
